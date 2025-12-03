@@ -1,0 +1,151 @@
+﻿@page
+@model SecondRazorPage.Pages.Student.HocPhiModel
+@{
+}
+
+
+@{
+    Layout = "_StudentLayout";
+    ViewData["Title"] = "Học Phí";
+    ViewData["CssFile"] = "HocPhi.css";   // load đúng css
+}
+
+<!-- DÁN phần <body> của bangdiem.html vào đây -->
+<div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-logo">KHTN</div>
+            <h3>TRANG NGƯỜI HỌC</h3>
+            <p>Đại học Khoa học Tự nhiên</p>
+        </div>
+
+        <nav class="menu">
+            <a href="/Categories/Index"><i class="icon">👤</i> Thông tin cá nhân</a>
+            <a href="/StudyResult/Index"><i class="icon">📚</i> Kết quả học tập</a>
+            <a href="/Student/CTSV"><i class="icon">🏛️</i> Công tác sinh viên</a>
+            <a href="/Student/LichHocThi"><i class="icon">🗓️</i> Lịch học/thi</a>
+            <a class="active" href="/Student/HocPhi"><i class="icon">💰</i> Học phí</a>
+            <a href="/Student/ThongBao"><i class="icon">🔔</i> Thông báo</a>
+        </nav>
+
+        <button class="logout">Đăng xuất</button>
+    </aside>
+    <!-- MAIN CONTENT -->
+    <main class="main">
+        <header class="topbar">
+            <div class="search">
+                <input type="text" placeholder="Tìm kiếm thông tin..." />
+                <button aria-label="search">🔍</button>
+            </div>
+        </header>
+
+        <section class="content-grid">
+            <div class="container">
+
+                <h2 class="title">Học phí</h2>
+
+                <div class="fee-card">
+                    <table class="fee-table">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Năm học</th>
+                                <th>Học kỳ</th>
+                                <th>Khoản thu</th>
+                                <th>Phải thu</th>
+                                <th>Đã thu</th>
+                                <th>Còn lại</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <!-- Ví dụ: nhiều dòng dữ liệu -->
+                            <tr>
+                                <td>1</td>
+                                <td>2024-2025</td>
+                                <td>HK1</td>
+                                <td>Học phí HK1</td>
+                                <td>7.500.000</td>
+                                <td>5.000.000</td>
+                                <td>2.500.000</td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td>2024-2025</td>
+                                <td>HK2</td>
+                                <td>Học phí HK2</td>
+                                <td>7.500.000</td>
+                                <td>0</td>
+                                <td>7.500.000</td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td>2023-2024</td>
+                                <td>HK2</td>
+                                <td>Học lại – Lập trình C</td>
+                                <td>650.000</td>
+                                <td>650.000</td>
+                                <td>0</td>
+                            </tr>
+
+                            <!-- Tùy bạn có thể xóa hết các dòng trên để hiển thị dòng thông báo -->
+                            <!--<tr class="empty-row">
+                                <td colspan="7">Không có khoản thu cần nộp</td>
+                            </tr>-->
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+
+</div>
+
+</main>
+
+</div>
+
+@section Scripts {
+    <script>
+        const searchInput = document.querySelector(".search input");
+        const searchButton = document.querySelector(".search button");
+
+        function handleSearch() {
+            const keyword = searchInput.value.trim().toLowerCase();
+
+            // Danh sách từ khóa → đường dẫn
+            const links = [
+                { keywords: ["học bổng", "hoc bong", "scholarship"], url: "https://hcmus.edu.vn/thong-bao-chuong-trinh-hoc-bong-jensen-huang-nam-2025/" },
+                { keywords: ["hỗ trợ học phí", "ho tro hoc phi", "hotro hocphi"], url: "https://hcmus.edu.vn/thong-bao-chuong-trinh-hoc-bong-gx-human-resources-development-for-energy-sector-co-quan-hop-tac-quoc-te-nhat-ban-jica/" },
+                { keywords: ["vay tiền", "vay tien", "vay tiền sinh viên", "sinh viên vay vốn"], url: "https://hcmus.edu.vn/chuong-trinh-sinh-vien-vay-uu-dai-de-hoc-tap-lai-suat-0-danh-cho-sinh-vien-dhqg-hcm-nam-hoc-2024-2025/" },
+                { keywords: ["học phí", "hoc phi"], url: "/hocphi.html" },
+            ];
+
+            // Tìm trang phù hợp
+            for (let item of links) {
+                if (item.keywords.some(kw => keyword.includes(kw))) {
+                    window.location.href = item.url;
+                    return;
+                }
+            }
+
+            // Nếu không có từ khóa phù hợp
+            alert("Không tìm thấy nội dung phù hợp. Vui lòng thử lại.");
+        }
+
+        // Nhấn nút
+        searchButton.addEventListener("click", handleSearch);
+
+        // Nhấn Enter
+        searchInput.addEventListener("keydown", function(e) {
+            if (e.key === "Enter") {
+                handleSearch();
+            }
+        });
+    </script>
+}

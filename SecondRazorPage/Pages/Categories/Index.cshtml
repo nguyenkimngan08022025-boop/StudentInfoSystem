@@ -1,0 +1,462 @@
+﻿@page "{StudentCode?}"
+@model SecondRazorPage.Pages.Categories.IndexModel
+
+@{
+    ViewData["Title"] = "Thông tin người học";
+    var s = Model.Student;   
+}
+
+<html id="__next_error__">
+<head>
+    <meta charSet="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Studentiformation@HCMUS</title>
+    <meta name="description" content="Trang người học của Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM" />
+    <link rel="icon" href="images/image2.png" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div class>
+            <div class=" flex-col flex sm:flex-row ">
+                <div class="relative sidebar border-r-2 flex flex-col justify-between ">
+                    <div class="z-10">
+                        <div class="flex flex-row justify-center relative">
+                            <img alt="logo" loading="lazy" width="170" height="140" decoding="async" data-nimg="1" class="w-[10.625em] h-[8.75em]" src="/images/image2.png" style="color: transparent;">
+                        </div>
+                        <div class="flex flex-row justify-center">
+                            <div class="sidebar-title">TRANG NGƯỜI HỌC</div>
+                        </div>
+                        <div class="flex flex-row justify-center">
+                            <div class="sidebar-small-title text-center">
+                                TRƯỜNG ĐẠI HỌC KHOA HỌC TỰ NHIÊN, ĐẠI HỌC QUỐC GIA TP. HỒ CHÍ MINH
+                            </div>
+                        </div>
+                        <div class="flex flex-row justify-center">
+                            <div class="flex flex-col menu justify-center">
+
+                                <a asp-page="/Categories/Index"
+                                    class="  menu-item flex flex-col justify-center rounded-md  active  ">
+                                    <div class="flex flex-row justify-start ">
+                                        <div class="w-[2.0em] flex flex-row justify-start">
+                                            <image src="/images/iconthongtinsinhvien.png">
+                                        </div>
+                                        <div class="h-full flex flex-col justify-center ml-2">Thông tin cá nhân</div>
+                                    </div>
+                                </a>
+                                <a asp-page="/StudyResult/Index"
+                                   class="menu-item flex flex-col justify-center rounded-md active">
+                                    <div class="flex flex-row justify-start">
+                                        <div class="w-[2.0em] flex flex-row justify-start">
+                                            <img src="/images/iconketquahoctap.png" />
+                                        </div>
+                                        <div class="h-full flex flex-col justify-center ml-2">
+                                            Kết quả học tập
+                                        </div>
+                                    </div>
+                                </a>
+
+
+                                <a asp-page="/Student/CTSV"
+                                    class="  menu-item flex flex-col justify-center rounded-md  active  ">
+                                    <div class="flex flex-row justify-start ">
+                                        <div class="w-[2.0em] flex flex-row justify-start">
+                                            <image src="/images/iconcongtacsinhvien.png">
+                                        </div>
+                                        <div class="h-full flex flex-col justify-center ml-2">Công tác sinh viên</div>
+                                    </div>
+                                </a>
+                                <a asp-page="/Student/LichHocThi"
+                                    class="  menu-item flex flex-col justify-center rounded-md  active  "  >
+                                    <div class="flex flex-row justify-start ">
+                                        <div class="w-[2.0em] flex flex-row justify-start">
+                                            <image src="/images/iconlichhoclichthi.png">
+                                        </div>
+                                        <div class="h-full flex flex-col justify-center ml-2">Lịch học/thi</div>
+                                    </div>
+                                </a>
+                                
+
+                                <a asp-page="/Student/HocPhi"
+                                   class= "menu-item flex flex-col justify-center rounded-md active ">
+                                    <div class="flex flex-row justify-start ">
+                                        <div class="w-[2.0em] flex flex-row justify-start">
+                                            <image src="/images/iconhocphi.png">
+                                        </div>
+                                        <div class="h-full flex flex-col justify-center ml-2">Học phí</div>
+                                    </div>
+                   
+                                </a>
+                                <a asp-page="/Student/ThongBao"
+                                    class="  menu-item flex flex-col justify-center rounded-md  active  ">
+                                    <div class="flex flex-row justify-start ">
+                                        <div class="w-[2.0em] flex flex-row justify-start">
+                                            <image src="/images/iconthongbao.png">
+                                        </div>
+                                        <div class="h-full flex flex-col justify-center ml-2">Thông báo</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-row justify-center z-20">
+                        <button type="button" class="primary-button rounded-md w-[65%] h-[3em] text-[0.7em]">
+                            <div class="flex flex-row justify-center ">
+                                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-right-from-bracket" class="svg-inline--fa fa-arrow-right-from-bracket my-auto mr-2 w-[1em] h-[1em] " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
+                                    <path fill="currentColor" d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"></path>
+                                </svg>
+                                <div>Đăng xuất</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div class="main-part ">
+                    <div class="header z-10 border-b-2 flex flex-row justify-between  px-8 relative ">
+                        <div class="flex flex-row">
+                            <div class="w-[20em] flex flex-col justify-center ">
+                                <div class="flex flex-row justify-center w-full h-[2.2em]">
+                                    <input class="border text-[0.7em] rounded-md  rounded-r-none block w-[85%] p-1.5 search-bar" disabled="" placeholder="Tìm kiếm thông tin">
+                                    <button disabled="" title="search-button" type="button" class=" primary-button rounded-l-none rounded-md w-[15%] justify-center flex flex-col" style="background-color: rgb(38, 61, 115);">
+                                        <div class="flex flex-row justify-center w-full h-full">
+                                            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="magnifying-glass" class="svg-inline--fa fa-magnifying-glass m-auto w-[1em] h-[1em]" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
+                                                <path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" flex flex-col justify-center ">
+                            <div class="flex flex-row relative">
+                                <img alt="avatar" loading="lazy" width="100" height="100" decoding="async" data-nimg="1" class="rounded-full w-[2.5em] h-[2.5em]" src="/images/avatar1.jpg" style="color: transparent;">
+                                <div class="flex flex-col ml-3">
+                                    <div class="avatar-name">@s?.Name</div>
+                                    <div class="avatar-email">2512036968@student.hcmus.edu.vn</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid py-2.5">
+                        <div class="row  sm:w-[62vw] w-[100vw]">
+                            <div class="header z-10 border-b-2  flex-row justify-between  px-4 relative sm:hidden flex">
+                                <div class="flex flex-row">
+                                    <div class="flex flex-row justify-center">
+                                        <div class="flex flex-col justify-center">
+                                            <button title="menu-button" class="bg-transparent">
+                                                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" class="svg-inline--fa fa-bars  w-[2em] h-[2em] ml-0 mr-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                    <path fill="currentColor" d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div class="flex flex-col justify-center relative">
+                                            <img alt="avatar" loading="lazy" width="250" height="250" decoding="async" data-nimg="1" class="rounded-lg  sm:w-[70%] sm:h-[70%] w-full h-full" src="/images/avatar1.jpg" style="color: transparent;">
+                                        </div>
+                                        <div class="flex flex-col justify-center">
+                                            <div class="main-color h-[3.3em] w-[0.3em] mx-2"></div>
+                                        </div>
+                                        <div class="flex flex-col justify-center">
+                                            <div class="flex flex-row">
+                                                <div class="sidebar-title">TRANG NGƯỜI HỌC</div>
+                                            </div>
+                                            <div class="sidebar-small-title text-start">TRƯỜNG ĐẠI HỌC KHOA HỌC TỰ NHIÊN, ĐẠI HỌC QUỐC GIA TP. HỒ CHÍ MINH</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" flex flex-col justify-center ">
+                                    <div class="flex flex-row">
+                                        <div class="flex flex-col justify-center"></div>
+                                        <div>
+                                            <img alt="avatar" loading="lazy" width="100" height="100" decoding="async" data-nimg="1" class="ml-3 rounded-full w-[2.7em] h-[2.7em]" src="/images/avatar1.jpg" style="color: transparent;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="section border relative">
+                                    <div class="flex flex-row flex-start top-0 left-0  absolute w-full ">
+                                        <div class="primary-header-background  w-[40%] rounded-tl">
+                                            <h1 class="section-title">Thông tin chung</h1>
+                                        </div>
+                                        <div class="w-12 h-20  overflow-hidden ">
+                                            <div class="triangle-header h-20 rotate-45 transform origin-top-right"></div>
+                                        </div>
+                                    </div>
+                                    <div class="container-fluid p-0 w-full mt-10">
+                                        <div class="row">
+                                            <div class="col-4 ">
+                                                <div class="flex flex-row justify-center">
+                                                    <img alt="avatar" loading="lazy" width="250" height="250" decoding="async" data-nimg="1" class="rounded-lg  sm:w-[70%] sm:h-[70%] w-full h-full" src="/images/avatar1.jpg" style="color: transparent;">
+                                                </div>
+                                                <div class="text-center avatar-info-name mt-2">@s?.Name</div>
+                                                <div class="text-center avatar-info-status">Sinh viên  </div>
+                                            </div>
+                                            <div class="col-8  ">
+                                                <div class="grid grid-cols-2 gap-y-3 gap-x-3 ml-10 pb-2">
+                                                    <div>
+                                                        <div class="info-label">Mã số sinh viên/học viên</div>
+                                                        <div class="info-value">@s?.StudentCode</div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="info-label">Ngày sinh</div>
+                                                        <div class="info-value">@s?.DateOfBirth</div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="info-label">Nơi sinh</div>
+                                                        <div class="info-value">@s?.PlaceOfBirth</div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="info-label">Giới tính</div>
+                                                        <div class="info-value">@s?.Gender</div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="info-label">Khóa tuyển</div>
+                                                        <div class="info-value">@s?.IntakeYear</div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="info-label">Bậc đào tạo</div>
+                                                        <div class="info-value">@s?.DegreeLevel</div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="info-label">Ngành học</div>
+                                                        <div class="info-value">@s?.Major</div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="info-label">Chuyên ngành</div>
+                                                        <div class="info-value">@s?.Specialization</div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="info-label">Loại hình đào tạo</div>
+                                                        <div class="info-value">@s?.TrainingType</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="section border mt-2.5 relative">
+                                    <div class="flex flex-row flex-start top-0 left-0  absolute w-full ">
+                                        <div class="secondary-header-background  w-[40%] rounded-tl">
+                                            <h1 class="section-title">Thông tin chi tiết</h1>
+                                        </div>
+                                        <div class="w-12 h-20  overflow-hidden ">
+                                            <div class="second-triangle-header h-20 rotate-45 transform origin-top-right"></div>
+                                        </div>
+                                    </div>
+                                    <div class="container-fluid p-0 w-full mt-10">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="grid grid-cols-3 gap-3 ">
+                                                    <div class="">
+                                                        <div class="info-label">CMND/CCCD</div>
+                                                        <div class="info-value small ">009999999</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Ngày cấp</div>
+                                                        <div class="info-value small ">09/12/2021</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Nơi cấp</div>
+                                                        <div class="info-value small ">Cục Cảnh sát quản lý hành chính về trật tự xã hội</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Quốc tịch</div>
+                                                        <div class="info-value small ">Việt Nam</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Dân tộc</div>
+                                                        <div class="info-value small ">Kinh</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Tôn giáo</div>
+                                                        <div class="info-value small ">Không</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Địa chỉ thường trú</div>
+                                                        <div class="info-value small ">Tổ 3, Thôn Phú Bình, Xã Xuân Phú, Thành phố Đà Nẵng, Xã Xuân Phú, Thành phố Đà Nẵng</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Điện thoại nhà</div>
+                                                        <div class="info-value small opacity-90">_</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Email cá nhân</div>
+                                                        <div class="info-value small ">Metquaaaaaa2007@gmail.com</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Địa chỉ hiện nay</div>
+                                                        <div class="info-value small opacity-90">_</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Di động</div>
+                                                        <div class="info-value small ">07985279999</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Email chính thức</div>
+                                                        <div class="info-value small ">777777777@student.hcmus.edu.vn</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Thành phần gia đình</div>
+                                                        <div class="info-value small ">Bần Nông</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Ngày vào Đoàn</div>
+                                                        <div class="info-value small ">22/12/2022</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Ngày vào Đảng</div>
+                                                        <div class="info-value small opacity-90">_</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Số thẻ</div>
+                                                        <div class="info-value small opacity-90">_</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Ngân hàng</div>
+                                                        <div class="info-value small opacity-90">_</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Chi nhánh</div>
+                                                        <div class="info-value small opacity-90">_</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Người liên lạc</div>
+                                                        <div class="info-value small ">Nguyễn Thị B</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Địa chỉ liên lạc</div>
+                                                        <div class="info-value small ">Tổ 3, Thôn Phú Bình, Xã Xuân Phú, Thành phố Đà Nẵng</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Điện thoại người liên lạc</div>
+                                                        <div class="info-value small ">077777777</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Email người liên lạc</div>
+                                                        <div class="info-value small ">Baohmoixongday.ds@gmail.com</div>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class="info-label">Quan hệ người liên lạc</div>
+                                                        <div class="info-value small ">Mẹ</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fixed top-0 py-2.5  right-2 overflow-auto h-[85vh] w-[20vw]">
+                        <div class="header invisible"></div>
+                        <div class="">
+                            <div class="section border px-3 pb-2 relative">
+                                <div class="flex flex-row justify-between top-0 left-0  absolute w-full ">
+                                    <div class="flex flex-col justify-center  w-[60%]">
+                                        <h3 class="right-part-header-title w-full">Thông báo gần đây</h3>
+                                    </div>
+                                    <div class="flex flex-row w-[50%] ">
+                                        <div class=" border-solid   right-part-triangle border-r-[2em] border-y-transparent border-t-[2.5em] border-b-0 border-l-0"></div>
+                                        <div class="right-part-header-background  w-full h-full rounded-tr"></div>
+                                    </div>
+                                </div>
+                                <div class="container-fluid p-0 w-full mt-3">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <a class=" mb-1 decoration-transparent " href="/notifications/22974405356">
+                                                <div class="notification rounded flex flex-row justify-between">
+                                                    <div class="flex flex-row w-full">
+                                                        <div class="h-full flex flex-col justify-start">
+                                                            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" class="svg-inline--fa fa-bell h-[40%] mt-1 text-[#7c7c7c]" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                                <path fill="currentColor" d="M224 0c-17.7 0-32 14.3-32 32l0 19.2C119 66 64 130.6 64 208l0 18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416l384 0c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8l0-18.8c0-77.4-55-142-128-156.8L256 32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3l-64 0-64 0c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z"></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="w-full ml-4 ">
+                                                            <div class="notification-header text  ">Thông báo về kiểm tra trình độ tiếng Anh đầu khóa – trình độ đại học, hệ chính quy, khóa tuyển 2025</div>
+                                                            <div class="notification-date mt-0.5  ">04/09/2025</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row text-center w-full">
+                                        <a class="col-12 text-center w-full text-[0.7em] font-bold flex flex-row justify-center decoration-transparent" href="/notifications">
+                                            <div>Xem thêm</div>
+                                            <div class="flex flex-col justify-center ml-1">
+                                                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" class="svg-inline--fa fa-chevron-down " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                                    <path fill="currentColor" d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path>
+                                                </svg>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
+
+
+@*
+
+@page
+@model SecondRazorPage.Pages.Categories.IndexModel
+
+<div class="container p-3">
+	<div class="row pt-4">
+		<div class="col -6">
+			<h2 class="text-primary">Category List</h2>
+		</div>
+
+		<div class=" col-6">
+			<a asp-page="CreateNewCate" class="btn btn-primary">
+				Create New Category
+			</a>
+		</div>
+
+	</div>
+
+	<br /> <br />
+
+	<table class="table table-bordered table-striped" style=" width:100%">
+
+		<thead>
+
+			<tr>
+
+				<th>
+					Category Name
+				</th>
+
+				<th>
+					Display Order 
+				</th>
+
+			</tr>
+		</thead>
+
+		<tbody>
+			@foreach(var obj in Model.Categories)
+			{
+				<tr>
+					<td width="50%">
+						@obj.Name
+
+					</td>
+					
+				</tr>
+			}
+			
+
+		</tbody>
+
+	</table>
+
+
+</div>
+*@

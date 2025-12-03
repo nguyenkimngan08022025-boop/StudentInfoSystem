@@ -1,0 +1,193 @@
+﻿@page
+@model SecondRazorPage.Pages.Student.ThongBaoModel
+
+
+@{
+    Layout = "_StudentLayout";
+    ViewData["Title"] = "Thông Báo";
+    ViewData["CssFile"] = "ThongBao.css";   // load đúng css
+}
+
+<!-- DÁN phần <body> của bangdiem.html vào đây -->
+<div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-logo">KHTN</div>
+            <h3>TRANG NGƯỜI HỌC</h3>
+            <p>Đại học Khoa học Tự nhiên</p>
+        </div>
+
+        <nav class="menu">
+            <a href="/Categories/Index"><i class="icon">👤</i> Thông tin cá nhân</a>
+            <a href="/StudyResult/Index"><i class="icon">📚</i> Kết quả học tập</a>
+            <a href="/Student/CTSV"><i class="icon">🏛️</i> Công tác sinh viên</a>
+            <a href="/Student/LichHocThi"><i class="icon">🗓️</i> Lịch học/thi</a>
+            <a href="/Student/HocPhi"><i class="icon">💰</i> Học phí</a>
+            <a class="active" href="/Student/ThongBao"><i class="icon">🔔</i> Thông báo</a>
+        </nav>
+
+        <button class="logout">Đăng xuất</button>
+    </aside>
+    <!-- MAIN CONTENT -->
+    <main class="main">
+        <header class="topbar">
+            <div class="search">
+                <input type="text" placeholder="Tìm kiếm thông tin..." />
+                <button aria-label="search">🔍</button>
+            </div>
+        </header>
+
+        <section class="content-grid">
+            <!-- TITLE -->
+            <h2 class="page-title">Thông báo</h2>
+
+            <div class="main-area">
+
+                <!-- NOTIFICATION LIST -->
+                <section class="notif-list card">
+                    <div class="card-header blue">Tất cả thông báo</div>
+
+                    <!-- 1 -->
+                    <div class="notif-item" data-type="daotao">
+                        <span class="notif-icon">🔔</span>
+                        <div>
+                            <p><strong>Kiểm tra trình độ tiếng Anh đầu khóa – hệ chính quy, khóa 2025</strong></p>
+                            <span class="date">04/09/2025</span>
+                        </div>
+                    </div>
+
+                    <!-- 2 -->
+                    <div class="notif-item" data-type="hocphi">
+                        <span class="notif-icon">💰</span>
+                        <div>
+                            <p><strong>Thông báo đóng học phí học kỳ I năm học 2025–2026</strong></p>
+                            <span class="date">28/08/2025</span>
+                        </div>
+                    </div>
+
+                    <!-- 3 -->
+                    <div class="notif-item" data-type="daotao">
+                        <span class="notif-icon">📚</span>
+                        <div>
+                            <p><strong>Kế hoạch đăng ký học phần học kỳ I năm học 2025–2026</strong></p>
+                            <span class="date">20/08/2025</span>
+                        </div>
+                    </div>
+
+                    <!-- 4 -->
+                    <div class="notif-item" data-type="sukien">
+                        <span class="notif-icon">🎉</span>
+                        <div>
+                            <p><strong>Thông báo tham gia Tuần lễ sinh hoạt công dân đầu khóa</strong></p>
+                            <span class="date">14/08/2025</span>
+                        </div>
+                    </div>
+
+                    <!-- 5 -->
+                    <div class="notif-item" data-type="khac">
+                        <span class="notif-icon">📢</span>
+                        <div>
+                            <p><strong>Cảnh báo lừa đảo học phí và đăng ký môn học</strong></p>
+                            <span class="date">10/08/2025</span>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- FILTER BOX -->
+                <aside class="filter-box card">
+                    <div class="card-header blue">Lọc thông báo</div>
+
+                    <div class="filter-group" style="padding:15px;">
+                        <label>Loại thông báo</label>
+                        <select id="filter-type" style="width:100%;padding:8px;border-radius:6px;">
+                            <option value="all">Tất cả</option>
+                            <option value="daotao">Đào tạo</option>
+                            <option value="hocphi">Học phí</option>
+                            <option value="sukien">Sự kiện</option>
+                            <option value="khac">Khác</option>
+                        </select>
+
+                        <br><br>
+
+                        <label>Từ ngày:</label>
+                        <input type="date" id="filter-from" style="width:100%;padding:8px;border-radius:6px;">
+
+                        <br><br>
+
+                        <label>Đến ngày:</label>
+                        <input type="date" id="filter-to" style="width:100%;padding:8px;border-radius:6px;">
+                    </div>
+                </aside>
+
+
+            </div>
+
+    </main>
+
+</div>
+
+@section Scripts {
+    <script>
+        const searchInput = document.querySelector(".search input");
+        const typeSelect = document.querySelector("#filter-type");
+        const dateFrom = document.querySelector("#filter-from");
+        const dateTo = document.querySelector("#filter-to");
+        const notifItems = document.querySelectorAll(".notif-item");
+
+        function applyFilter() {
+            const keyword = searchInput.value.toLowerCase();
+            const typeValue = typeSelect.value;
+            const fromValue = dateFrom.value;
+            const toValue = dateTo.value;
+
+            notifItems.forEach(item => {
+                const title = item.querySelector("p").innerText.toLowerCase();
+                const dateText = item.querySelector(".date").innerText.split("/").reverse().join("-");
+                const itemType = item.dataset.type;
+
+                let show = true;
+
+                // Lọc theo từ khóa
+                if (!title.includes(keyword)) show = false;
+
+                // Lọc theo loại
+                if (typeValue !== "all" && itemType !== typeValue) show = false;
+
+                // Lọc theo ngày
+                if (fromValue && dateText < fromValue) show = false;
+                if (toValue && dateText > toValue) show = false;
+
+                item.style.display = show ? "flex" : "none";
+            });
+        }
+
+        searchInput.addEventListener("input", applyFilter);
+        typeSelect.addEventListener("change", applyFilter);
+        dateFrom.addEventListener("change", applyFilter);
+        dateTo.addEventListener("change", applyFilter);
+    </script>
+    <script>
+        const searchInput = document.querySelector(".search input");
+        const notifItems = document.querySelectorAll(".notif-item");
+
+        function filterNotifications() {
+            const keyword = searchInput.value.toLowerCase();
+
+            notifItems.forEach(item => {
+                const title = item.querySelector("p").innerText.toLowerCase();
+
+                if (title.includes(keyword)) {
+                    item.style.display = "flex";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+
+        searchInput.addEventListener("input", filterNotifications);
+    </script>
+
+}
+

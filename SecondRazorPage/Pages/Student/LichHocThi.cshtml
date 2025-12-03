@@ -1,0 +1,143 @@
+﻿@page
+@model SecondRazorPage.Pages.Student.LichHocModel
+
+@{
+    Layout = "_StudentLayout";
+    ViewData["Title"] = "Lịch Học";
+    ViewData["CssFile"] = "LichHocThi.css";   // load đúng css
+}
+
+<!-- DÁN phần <body> của bangdiem.html vào đây -->
+    <div class="app">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-logo">KHTN</div>
+                <h3>TRANG NGƯỜI HỌC</h3>
+                <p>Đại học Khoa học Tự nhiên</p>
+            </div>
+
+        <nav class="menu">
+            <a href="/Categories/Index"><i class="icon">👤</i> Thông tin cá nhân</a>
+            <a href="/StudyResult/Index"><i class="icon">📚</i> Kết quả học tập</a>
+            <a href="/Student/CTSV"><i class="icon">🏛️</i> Công tác sinh viên</a>
+            <a class="active" href="/Student/LichHocThi"><i class="icon">🗓️</i> Lịch học/thi</a>
+            <a href="/Student/HocPhi"><i class="icon">💰</i> Học phí</a>
+            <a href="/Student/ThongBao"><i class="icon">🔔</i> Thông báo</a>
+        </nav>
+
+            <button class="logout">Đăng xuất</button>
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main">
+            <header class="topbar">
+                <div class="search">
+                    <input type="text" placeholder="Tìm kiếm thông tin..." />
+                    <button aria-label="search">🔍</button>
+                </div>
+            </header>
+
+            <section class="content-grid">
+                <!-- Row 1 -->
+                <div class="card card-blue">
+                    <h2>Thời khoá biểu</h2>
+                    <table class="mini-table">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Năm học</th>
+                                <th>Học kỳ</th>
+                                <th>Mã môn học</th>
+                                <th>Tên môn học</th>
+                                <th>Tín chỉ</th>
+                                <th>Thời gian</th>
+                                <th>Phòng học</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>2024-2025</td>
+                                <td>1</td>
+                                <td>MTH00021</td>
+                                <td>Vi tích phân 1</td>
+                                <td>4</td>
+                                <td>12:40 - 16:10</td>
+                                <td>E210</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>2024-2025</td>
+                                <td>1</td>
+                                <td>MTH00031</td>
+                                <td>Cơ sở lập trình</td>
+                                <td>4</td>
+                                <td>08:20 - 11:50</td>
+                                <td>E206</td>
+                            </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>2024-2025</td>
+                            <td>1</td>
+                            <td>MTH00031</td>
+                            <td>Nhập môn công nghệ thông tin </td>
+                            <td>4</td>
+                            <td>12:40 - 16:10</td>
+                            <td>E305</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card card-orange">
+                    <h2>Lịch thi</h2>
+                    <table class="mini-table">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Năm học</th>
+                                <th>Học kỳ</th>
+                                <th>Ngày thi</th>
+                                <th>Giờ thi</th>
+                                <th>Môn thi</th>
+                                <th>Phòng thi</th>
+                                <th>Cơ sở thi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>2024-2025</td>
+                                <td>1</td>
+                                <td>10/11/2025</td>
+                                <td>09:00</td>
+                                <td>Cấu trúc dữ liệu</td>
+                                <td>A401</td>
+                                <td>Cơ sở 1</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>2024-2025</td>
+                                <td>1</td>
+                                <td>12/11/2025</td>
+                                <td>14:00</td>
+                                <td>Lập trình Web</td>
+                                <td>B205</td>
+                                <td>Cơ sở 2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+
+@section Scripts {
+    <script>
+        // toàn bộ JS của trang
+    </script>
+}

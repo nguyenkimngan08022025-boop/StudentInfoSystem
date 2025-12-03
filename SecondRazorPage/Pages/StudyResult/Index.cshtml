@@ -1,0 +1,181 @@
+﻿@page
+@model SecondRazorPage.Pages.StudyResult.IndexModel
+
+@{
+    Layout = "_StudentLayout";
+    ViewData["Title"] = "Kết quả học tập";
+    ViewData["CssFile"] = "StudentRes.css";
+}
+
+<div class="app">
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-logo">KHTN</div>
+            <h3>TRANG NGƯỜI HỌC</h3>
+            <p>Đại học Khoa học Tự nhiên</p>
+        </div>
+
+        <nav class="menu">
+            <a href="/Categories/Index"><i class="icon">👤</i> Thông tin cá nhân</a>
+            <a class="active" href="/StudyResult/Index"><i class="icon">📚</i> Kết quả học tập</a>
+            <a href="/Student/CTSV"><i class="icon">🏛️</i> Công tác sinh viên</a>
+            <a href="/Student/LichHocThi"><i class="icon">🗓️</i> Lịch học/thi</a>
+            <a href="/Student/HocPhi"><i class="icon">💰</i> Học phí</a>
+            <a href="/Student/ThongBao"><i class="icon">🔔</i> Thông báo</a>
+        </nav>
+
+        <button class="logout">Đăng xuất</button>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div class="search">
+                <input type="text" id="subject-search" placeholder="Tìm kiếm theo Tên môn học..." />
+                <button aria-label="search">🔍</button>
+            </div>
+        </header>
+
+        <section class="content-grid">
+            <div class="card card-blue">
+                <h2>Bảng điểm</h2>
+
+                <select class="term-dropdown">
+                    <option value="">-- Tất cả năm học --</option>
+                    <option value="2024-2025">2024-2025</option>
+                    <option value="2025-2026">2025-2026</option>
+                    <option value="2026-2027">2026-2027</option>
+                </select>
+
+                <table class="mini-table" id="score-table">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Năm học</th>
+                            <th>Học kỳ</th>
+                            <th>Mã môn học</th>
+                            <th>Tên môn học</th>
+                            <th>Số TC</th>
+                            <th>Lớp</th>
+                            <th>Loại điểm</th>
+                            <th>Điểm (hệ 10)</th>
+                            <th>Ghi chú</th>
+                            <th>Chương trình</th>
+                            <th>Hệ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-term="2024-2025">
+                            <td>1</td>
+                            <td>2024-2025</td>
+                            <td>1</td>
+                            <td>IT001</td>
+                            <td>Cấu trúc dữ liệu</td>
+                            <td>3</td>
+                            <td>25CTT5</td>
+                            <td>Giỏi</td>
+                            <td>9.0</td>
+                            <td></td>
+                            <td>Chính quy</td>
+                            <td>Đại học</td>
+                        </tr>
+                        <tr data-term="2024-2025">
+                            <td>2</td>
+                            <td>2024-2025</td>
+                            <td>2</td>
+                            <td>IT001</td>
+                            <td>Cấu trúc dữ liệu</td>
+                            <td>3</td>
+                            <td>25CTT5</td>
+                            <td>Giỏi</td>
+                            <td>9.1</td>
+                            <td></td>
+                            <td>Chính quy</td>
+                            <td>Đại học</td>
+                        </tr>
+
+                        <tr data-term="2025-2026">
+                            <td>3</td>
+                            <td>2025-2026</td>
+                            <td>1</td>
+                            <td>IT002</td>
+                            <td>Mạng máy tính</td>
+                            <td>3</td>
+                            <td>25CTT5</td>
+                            <td>Giỏi</td>
+                            <td>9.3</td>
+                            <td></td>
+                            <td>Chính quy</td>
+                            <td>Đại học</td>
+                        </tr>
+                        <tr data-term="2025-2026">
+                            <td>4</td>
+                            <td>2025-2026</td>
+                            <td>2</td>
+                            <td>IT002</td>
+                            <td>Mạng máy tính</td>
+                            <td>3</td>
+                            <td>25CTT5</td>
+                            <td>Khá</td>
+                            <td>8.0</td>
+                            <td></td>
+                            <td>Chính quy</td>
+                            <td>Đại học</td>
+                        </tr>
+
+                        <tr data-term="2026-2027">
+                            <td>5</td>
+                            <td>2026-2027</td>
+                            <td>1</td>
+                            <td>IT004</td>
+                            <td>Cơ sở trí tuệ nhân tạo</td>
+                            <td>3</td>
+                            <td>25CTT5</td>
+                            <td>Giỏi</td>
+                            <td>9.3</td>
+                            <td></td>
+                            <td>Chính quy</td>
+                            <td>Đại học</td>
+                        </tr>
+                        <tr data-term="2026-2027">
+                            <td>6</td>
+                            <td>2026-2027</td>
+                            <td>2</td>
+                            <td>IT004</td>
+                            <td>Cơ sở trí tuệ nhân tạo</td>
+                            <td>3</td>
+                            <td>25CTT5</td>
+                            <td>Giỏi</td>
+                            <td>9.8</td>
+                            <td></td>
+                            <td>Chính quy</td>
+                            <td>Đại học</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+
+@section Scripts {
+    <script>
+        function filterByTerm() {
+            const selected = document.querySelector(".term-dropdown").value;
+            const rows = document.querySelectorAll("#score-table tbody tr");
+            const searchQuery = document.getElementById("subject-search").value.toLowerCase();
+
+            rows.forEach(row => {
+                const termMatch = selected === "" || row.getAttribute("data-term") === selected;
+                const subjectName = row.cells[4].textContent.toLowerCase();
+                const searchMatch = subjectName.includes(searchQuery);
+
+                row.style.display = (termMatch && searchMatch) ? "" : "none";
+            });
+        }
+
+        document.querySelector(".term-dropdown").addEventListener("change", filterByTerm);
+        document.getElementById("subject-search").addEventListener("keyup", filterByTerm);
+        document.getElementById("subject-search").placeholder = "Tìm kiếm theo Tên môn học...";
+    </script>
+}

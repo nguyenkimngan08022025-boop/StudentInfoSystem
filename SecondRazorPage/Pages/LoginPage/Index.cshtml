@@ -1,0 +1,54 @@
+﻿@page
+@model SecondRazorPage.Pages.LoginPage.IndexModel
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Login – Choose Role</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        .login-bg {
+            background: url("/BgImage/nice.jpg") no-repeat center center fixed;
+            background-size: cover; 
+            min-height: 100vh;
+        }
+        .login-overlay {
+            background-color: rgba(0,0,0,0.55);
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-bg">
+        <div class="login-overlay d-flex justify-content-center align-items-center">
+            <div class="card shadow-lg" style="width: 420px;">
+                <div class="card-body text-center p-4">
+                    <h4 class="mb-3">TRANG NGƯỜI DÙNG</h4>
+                    <h5 class="mb-4">Đăng nhập</h5>
+
+                    <p class="mb-3 text-muted">Chọn vai trò của bạn</p>
+
+                    <div class="d-grid gap-3">
+                        <!-- Teacher button (not implemented) -->
+                        <button class="btn btn-outline-secondary" disabled>
+                            Giáo viên (chưa làm)
+                        </button>
+
+                        <!-- Student button – go to /Login/Student -->
+                        <a asp-page="/LoginPage/Student" class="btn btn-primary">
+                            Sinh viên
+                        </a>
+                    </div>
+
+                    <p class="mt-4 small text-muted">
+                        Vui lòng dùng tài khoản do nhà trường cung cấp.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
