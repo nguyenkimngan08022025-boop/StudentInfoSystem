@@ -1,0 +1,65 @@
+﻿@page
+@model SecondRazorPage.Pages.LoginPage.TeacherLoginModel
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Student Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        .login-bg {
+            background: url("/images/hcmus-bg.jpg") no-repeat center center fixed;
+            background-size:cover; 
+            min-height: 100vh;
+        }
+        .login-overlay {
+            background-color: rgba(0,0,0,0.55);
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <div class="login-bg">
+        <div class="login-overlay d-flex justify-content-center align-items-center">
+            <div class="card shadow-lg" style="width: 420px;">
+                <div class="card-body p-4">
+                    <h4 class="text-center mb-4">Đăng nhập Giảng viên</h4>
+
+                    <form method="post">
+                        <div class="mb-3">
+                            <label asp-for="TeacherCode" class="form-label">Mã số Giảng viên</label>
+                            <input asp-for="TeacherCode" class="form-control" />
+                            <span asp-validation-for="TeacherCode" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label">Mật khẩu</label>
+                            <input asp-for="Password" class="form-control" type="password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="text-danger mb-2">
+                            @Html.ValidationSummary(false)
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            Đăng nhập
+                        </button>
+
+                        <div class="text-center">
+                            <a asp-page="/LoginPage/Index" class="small">Quay lại chọn vai trò</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <partial name="_ValidationScriptsPartial" />
+</body>
+</html>
+

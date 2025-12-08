@@ -1,0 +1,105 @@
+@page
+@model SecondRazorPage.Pages.Teachers.ScheduleModel
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Lịch dạy trong tuần";
+    /* Tận dụng file CSS cũ */
+    ViewData["CssFile"] = "StudentRes.css"; 
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/StudentRes.css" />
+</head>
+<body>
+
+<div class="app">
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-logo">KHTN</div>
+            <h3>CỔNG GIẢNG VIÊN</h3>
+        </div>
+
+        <nav class="menu">
+            <a href="/Teachers/Profile?teacherCode=@Model.CurrentTeacher?.MSGV">
+                <i class="icon">👤</i> Hồ sơ giảng viên
+            </a>
+
+            <a href="/Teachers/Index?teacherCode=@Model.CurrentTeacher?.MSGV">
+                <i class="icon">📝</i> Quản lý lớp học phần
+            </a>
+            <a class="active" href="/Teachers/lichday?teacherCode=@Model.CurrentTeacher?.MSGV">
+                <i class="icon">📅</i> Lịch dạy
+            </a>
+        </nav>
+
+        <form method="post" action="/Logout" style="margin-top: auto;">
+             <button class="logout" type="submit">Đăng xuất</button>
+        </form>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <span>Lịch giảng dạy tuần này</span>
+            <div class="user-info">
+                <span>GV. <strong>@Model.CurrentTeacher?.name</strong></span>
+            </div>
+        </header>
+
+        <section class="content-grid">
+            <div class="card card-blue">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h2>Thời khóa biểu</h2>
+                    <button class="btn-action" style="background-color: #2ecc71;">Xuất Excel</button>
+                </div>
+                
+                <table class="mini-table" style="margin-top: 15px;">
+                    <thead>
+                        <tr>
+                            <th>Thứ</th>
+                            <th>Ngày</th>
+                            <th>Ca học</th>
+                            <th>Môn học</th>
+                            <th>Lớp</th>
+                            <th>Phòng</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.DanhSachLich.Count > 0)
+                        {
+                            @foreach (var lich in Model.DanhSachLich)
+                            {
+                                <tr>
+                                    <td style="font-weight: bold; color: #0056b3;">@lich.Thu</td>
+                                    <td>@lich.Ngay</td>
+                                    <td>@lich.Ca</td>
+                                    <td>@lich.TenMon</td>
+                                    <td><span class="badge" style="background: #e1f5fe; color: #0288d1; padding: 4px 8px; border-radius: 4px;">@lich.MaLop</span></td>
+                                    <td style="font-weight: bold;">@lich.Phong</td>
+                                    <td><span style="color: green;">✔ Đã lên lịch</span></td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="7" style="text-align: center;">Tuần này không có lịch dạy nào!</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <p style="margin-top: 20px; font-style: italic; color: #666; font-size: 13px;">
+                    * Lưu ý: Nếu có thay đổi phòng học, vui lòng liên hệ phòng Đào tạo.
+                </p>
+            </div>
+        </section>
+    </main>
+</div>
+</body>
+</html>

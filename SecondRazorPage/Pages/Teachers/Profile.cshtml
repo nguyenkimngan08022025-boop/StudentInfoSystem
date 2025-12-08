@@ -1,0 +1,69 @@
+@page
+@model SecondRazorPage.Pages.Teachers.ProfileModel
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Hồ sơ cá nhân";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/StudentRes.css" />
+</head>
+<body>
+<div class="app">
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-logo">KHTN</div>
+            <h3>CỔNG GIẢNG VIÊN</h3>
+        </div>
+        <nav class="menu">
+            <a class="active" href="/Teachers/Profile?teacherCode=@Model.CurrentTeacher?.MSGV">
+                <i class="icon">👤</i> Hồ sơ giảng viên
+            </a>
+
+            <a href="/Teachers/Index?teacherCode=@Model.CurrentTeacher?.MSGV">
+                <i class="icon">📝</i> Quản lý lớp học phần
+            </a>
+            <a href="/Teachers/lichday?teacherCode=@Model.CurrentTeacher?.MSGV">
+                <i class="icon">📅</i> Lịch dạy
+            </a>
+        </nav>
+        <form method="post" action="/Logout" style="margin-top: auto;">
+             <button class="logout" type="submit">Đăng xuất</button>
+        </form>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <span>Hồ sơ cá nhân</span>
+            <div class="user-info">
+                <span>Xin chào, <strong>@Model.CurrentTeacher?.name</strong></span>
+            </div>
+        </header>
+
+        <section class="content-grid">
+            <div class="card card-blue" style="max-width: 600px; margin: 0 auto;">
+                <h2 style="text-align: center; border-bottom: 1px solid #eee; padding-bottom: 10px;">THÔNG TIN GIẢNG VIÊN</h2>
+                
+                <div style="margin-top: 20px; font-size: 16px; line-height: 2;">
+                    <p><strong>Họ và tên:</strong> @Model.CurrentTeacher?.name</p>
+                    <p><strong>Mã giảng viên:</strong> @Model.CurrentTeacher?.MSGV</p>
+                    <p><strong>Khoa/Môn</strong> Công nghệ thông tin/@Model.CurrentTeacher?.monday</p>
+                    <p><strong>Email:</strong> @Model.CurrentTeacher?.email</p>
+                    <p><strong>Số điện thoại:</strong> @Model.CurrentTeacher?.telnum</p>
+                </div>
+
+                <div style="margin-top: 30px; text-align: center;">
+                    <button class="btn-action" style="background-color: #f39c12;">Đổi mật khẩu</button>
+                    <button class="btn-action">Cập nhật thông tin</button>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+</body>
+</html>
