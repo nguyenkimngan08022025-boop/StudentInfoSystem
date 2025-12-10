@@ -8,6 +8,7 @@ namespace SecondRazorPage.Model
         [Key]
         public int Id { get; set; }
         [Required]
+        
         [Display(Name = "STT")]
         public int Stt { get; set; }
 
@@ -28,6 +29,9 @@ namespace SecondRazorPage.Model
         [Display(Name = "Còn lại")]
         public decimal ConLai => PhaiThu - DaThu;
 
-       
+        [Display(Name = "Mã số sinh viên/học viên")]
+        public string StudentCode { get; set; }
+
+
     }
 }

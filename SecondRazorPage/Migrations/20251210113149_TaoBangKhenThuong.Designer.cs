@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SecondRazorPage.Data;
 
@@ -11,9 +12,11 @@ using SecondRazorPage.Data;
 namespace SecondRazorPage.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251210113149_TaoBangKhenThuong")]
+    partial class TaoBangKhenThuong
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,10 +71,6 @@ namespace SecondRazorPage.Migrations
 
                     b.Property<int>("Stt")
                         .HasColumnType("int");
-
-                    b.Property<string>("StudentCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TenMonHoc")
                         .IsRequired()
@@ -151,10 +150,6 @@ namespace SecondRazorPage.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StudentCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("ThoiDiem")
                         .HasColumnType("datetime2");
 
@@ -187,10 +182,6 @@ namespace SecondRazorPage.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SoTien")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StudentCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -230,10 +221,6 @@ namespace SecondRazorPage.Migrations
                     b.Property<int>("Stt")
                         .HasColumnType("int");
 
-                    b.Property<string>("StudentCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("HocPhi");
@@ -251,10 +238,6 @@ namespace SecondRazorPage.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HinhThuc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StudentCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -278,10 +261,6 @@ namespace SecondRazorPage.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HinhThuc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StudentCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -326,10 +305,6 @@ namespace SecondRazorPage.Migrations
                         .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<string>("StudentCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("LichThi");
@@ -360,10 +335,6 @@ namespace SecondRazorPage.Migrations
 
                     b.Property<int>("Stt")
                         .HasColumnType("int");
-
-                    b.Property<string>("StudentCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TenMonHoc")
                         .IsRequired()

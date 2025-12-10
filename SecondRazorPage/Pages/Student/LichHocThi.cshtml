@@ -1,5 +1,5 @@
 ﻿@page
-@model SecondRazorPage.Pages.Student.LichHocModel
+@model SecondRazorPage.Pages.Categories.IndexModel
 
 @{
     Layout = "_StudentLayout";
@@ -57,36 +57,20 @@
                             </tr>
                         </thead>
                         <tbody>
+                           
+                        @for (int i = 0; i < Model.ThoiKhoaBieu.Count; i++)
+                        {
                             <tr>
-                                <td>1</td>
-                                <td>2024-2025</td>
-                                <td>1</td>
-                                <td>MTH00021</td>
-                                <td>Vi tích phân 1</td>
-                                <td>4</td>
-                                <td>12:40 - 16:10</td>
-                                <td>E210</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>2024-2025</td>
-                                <td>1</td>
-                                <td>MTH00031</td>
-                                <td>Cơ sở lập trình</td>
-                                <td>4</td>
-                                <td>08:20 - 11:50</td>
-                                <td>E206</td>
-                            </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>2024-2025</td>
-                            <td>1</td>
-                            <td>MTH00031</td>
-                            <td>Nhập môn công nghệ thông tin </td>
-                            <td>4</td>
-                            <td>12:40 - 16:10</td>
-                            <td>E305</td>
-                        </tr>
+                                <td>@(i+1)</td>
+                                <td>@(Model.ThoiKhoaBieu[i].NamHoc)</td>
+                                <td>@(Model.ThoiKhoaBieu[i].HocKy)</td>
+                                <td>@(Model.ThoiKhoaBieu[i].MaMonHoc)</td>
+                                <td>@(Model.ThoiKhoaBieu[i].TenMonHoc)</td>
+                                <td>@(Model.ThoiKhoaBieu[i].TinChi)</td>
+                                <td>@(Model.ThoiKhoaBieu[i].Thoigian)</td>
+                                <td>@(Model.ThoiKhoaBieu[i].PhongHoc)</td>
+                            
+                        </tr>}
                         </tbody>
                     </table>
                 </div>
@@ -107,26 +91,20 @@
                             </tr>
                         </thead>
                         <tbody>
+                        @for (int i = 0; i < Model.LichThi.Count; i++)
+                        {
                             <tr>
-                                <td>1</td>
-                                <td>2024-2025</td>
-                                <td>1</td>
-                                <td>10/11/2025</td>
-                                <td>09:00</td>
-                                <td>Cấu trúc dữ liệu</td>
-                                <td>A401</td>
-                                <td>Cơ sở 1</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>2024-2025</td>
-                                <td>1</td>
-                                <td>12/11/2025</td>
-                                <td>14:00</td>
-                                <td>Lập trình Web</td>
-                                <td>B205</td>
-                                <td>Cơ sở 2</td>
-                            </tr>
+                                <td>@(i+1)</td>
+                                <td>@Model.LichThi[i].NamHoc</td>
+                                <td>@Model.LichThi[i].HocKy</td>
+                                <td>@Model.LichThi[i].NgayThi</td>
+                                <td>@Model.LichThi[i].GioThi</td>
+                                <td>@Model.LichThi[i].MonThi</td>
+                                <td>@Model.LichThi[i].PhongThi</td>
+                                <td>@Model.LichThi[i].CoSoThi</td>
+                                
+                            </tr>}
+                            
                         </tbody>
                     </table>
                 </div>

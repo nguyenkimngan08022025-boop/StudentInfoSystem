@@ -7,6 +7,7 @@ namespace SecondRazorPage.Model
         [Key]
         public int Id { get; set; }
         [Required]
+       
         [Display(Name = "Năm học")]
         public string NamHoc { get; set; }
 
@@ -25,6 +26,9 @@ namespace SecondRazorPage.Model
         [Display(Name = "Thời gian")]
         [DataType(DataType.Date)]
         public DateTime ThoiGian { get; set; }
+
+        [Display(Name = "Mã số sinh viên/học viên")]
+        public string StudentCode { get; set; }
     }
 }
 

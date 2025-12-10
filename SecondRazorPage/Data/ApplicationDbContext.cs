@@ -18,11 +18,12 @@ namespace SecondRazorPage.Data
 
         public DbSet<DiemRenLuyen> DiemRenLuyen { get; set; }
         public DbSet<HocBong> HocBong { get; set; }
-        public DbSet<KhenThuong> KhenThuong { get; set; }
-
+        
         public DbSet<KyLuat> KyLuat { get; set; }
         public DbSet<ThoiKhoaBieu> ThoiKhoaBieu { get; set; }
 
         public DbSet<LichThi> LichThi { get; set; }
+
+        public DbSet<KhenThuong> KhenThuong { get; set; }
     }
 }

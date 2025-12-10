@@ -7,6 +7,7 @@ namespace SecondRazorPage.Model
         public int Id { get; set; }
 
         [Required]
+       
         [Display(Name = "Năm học")]
         public string NamHoc { get; set; }       
         [Display(Name = "Học kỳ")]
@@ -24,8 +25,9 @@ namespace SecondRazorPage.Model
         [DataType(DataType.Date)]
         public DateTime ThoiDiem{ get; set; }
 
-         
+        [Display(Name = "Mã số sinh viên/học viên")]
+        public string StudentCode { get; set; }
 
-         
+
     }
 }

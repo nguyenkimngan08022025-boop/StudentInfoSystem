@@ -8,6 +8,9 @@ namespace SecondRazorPage.Model
         public int Id { get; set; }
 
         [Required]
+
+      
+
         [Display(Name = "STT")]
         public int Stt { get; set; }      
 
@@ -49,5 +52,7 @@ namespace SecondRazorPage.Model
         [Display(Name = "Hệ")]
         public string He { get; set; }
 
+        [Display(Name = "Mã số sinh viên/học viên")]
+        public string StudentCode { get; set; }
     }
 }

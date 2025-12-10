@@ -1,19 +1,24 @@
-
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.ComponentModel.DataAnnotations;
+using SecondRazorPage.Data;   
+using System.Linq;
 
 namespace SecondRazorPage.Pages.LoginPage
 {
     public class StudentLoginModel : PageModel
     {
-        [BindProperty]
-        [Required]
-        public string? StudentId { get; set; }
+        private readonly ApplicationDbContext _context;
+
+        public StudentLoginModel(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
         [BindProperty]
-        [Required]
-        public string? Password { get; set; }
+        public string StudentId { get; set; }
+
+        [BindProperty]
+        public string Password { get; set; }   
 
         public void OnGet()
         {
@@ -21,27 +26,37 @@ namespace SecondRazorPage.Pages.LoginPage
 
         public IActionResult OnPost()
         {
-            string code = StudentId; 
-            if (!ModelState.IsValid)
+            if (string.IsNullOrWhiteSpace(StudentId))
             {
-                return Page(); // show validation messages
-            }
-
-            //  Fake check � replace with your real logic later
-            // For demo: any non-empty ID + password = success
-            // or you can hard-code: if (StudentId == "2312345" && Password == "123")
-            bool loginOk = true;
-
-            if (!loginOk)
-            {
-                ModelState.AddModelError(string.Empty, "Wrong MSSV or password");
+                ModelState.AddModelError("", "Vui lòng nhập mã số sinh viên");
                 return Page();
             }
 
-            // TODO: set cookie/session if you want real auth
+            // kiem tra ma so co dung hay khong
+            var exists = _context.Category
+                                 .Any(s => s.StudentCode == StudentId);
 
-            //  Redirect to main page after login
-            return RedirectToPage("/Categories/Index",new {studentCode = code});
+            if (!exists)
+            {
+                ModelState.AddModelError("", "Không tìm thấy MSSV trong hệ thống");
+                return Page();
+            }
+            else
+            {
+                HttpContext.Response.Cookies.Append(
+        "StudentCode",    
+        StudentId,       
+        new CookieOptions
+        {
+            HttpOnly = true,  
+            Secure = true,
+            IsEssential = true
+        });
+
+                return RedirectToPage("/Categories/Index");
+            }
+               
+               
         }
     }
 }

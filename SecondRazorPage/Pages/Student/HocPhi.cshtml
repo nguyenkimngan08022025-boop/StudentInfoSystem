@@ -1,13 +1,13 @@
 ﻿@page
-@model SecondRazorPage.Pages.Student.HocPhiModel
-@{
-}
+@model SecondRazorPage.Pages.Categories.IndexModel
+
 
 
 @{
     Layout = "_StudentLayout";
     ViewData["Title"] = "Học Phí";
-    ViewData["CssFile"] = "HocPhi.css";   // load đúng css
+    ViewData["CssFile"] = "HocPhi.css"; 
+    // load đúng css
 }
 
 <!-- DÁN phần <body> của bangdiem.html vào đây -->
@@ -49,6 +49,7 @@
                     <table class="fee-table">
                         <thead>
                             <tr>
+                               
                                 <th>STT</th>
                                 <th>Năm học</th>
                                 <th>Học kỳ</th>
@@ -62,35 +63,20 @@
                         <tbody>
 
                             <!-- Ví dụ: nhiều dòng dữ liệu -->
-                            <tr>
-                                <td>1</td>
-                                <td>2024-2025</td>
-                                <td>HK1</td>
-                                <td>Học phí HK1</td>
-                                <td>7.500.000</td>
-                                <td>5.000.000</td>
-                                <td>2.500.000</td>
-                            </tr>
-
-                            <tr>
-                                <td>2</td>
-                                <td>2024-2025</td>
-                                <td>HK2</td>
-                                <td>Học phí HK2</td>
-                                <td>7.500.000</td>
-                                <td>0</td>
-                                <td>7.500.000</td>
-                            </tr>
-
-                            <tr>
-                                <td>3</td>
-                                <td>2023-2024</td>
-                                <td>HK2</td>
-                                <td>Học lại – Lập trình C</td>
-                                <td>650.000</td>
-                                <td>650.000</td>
-                                <td>0</td>
-                            </tr>
+                            @for (int i = 0; i < Model.HocPhi.Count; i++)
+                            {
+                                <tr>
+                                    <td>@(i+1)</td>
+                                    <td>@(Model.HocPhi[i].NamHoc)</td>
+                                    <td>@(Model.HocPhi[i].HocKy)</td>
+                                    <td>@(Model.HocPhi[i].KhoanThu)</td>
+                                    <td>@(Model.HocPhi[i].PhaiThu)</td>
+                                    <td>@(Model.HocPhi[i].DaThu)</td>
+                                    <td>@(Model.HocPhi[i].ConLai)</td>
+                                </tr>
+                            }
+                           
+  
 
                             <!-- Tùy bạn có thể xóa hết các dòng trên để hiển thị dòng thông báo -->
                             <!--<tr class="empty-row">
