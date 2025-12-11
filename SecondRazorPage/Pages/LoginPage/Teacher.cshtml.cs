@@ -35,7 +35,7 @@ namespace SecondRazorPage.Pages.LoginPage
             }
 
             var teacher = await _context.Teachers
-                                .FirstOrDefaultAsync(t => t.MSGV == TeacherCode);
+                                .FirstOrDefaultAsync(t => t.MSGV == TeacherCode /*&& t.pass == Password*/);  // để kiểm tra luôn mật khẩu
 
             if (teacher == null)
             {
