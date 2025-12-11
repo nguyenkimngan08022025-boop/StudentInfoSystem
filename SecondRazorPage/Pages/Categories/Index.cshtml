@@ -1,4 +1,4 @@
-﻿@page "{StudentCode?}"
+﻿@page 
 @model SecondRazorPage.Pages.Categories.IndexModel
 
 @{
@@ -99,17 +99,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex flex-row justify-center z-20">
-                        <button type="button" class="primary-button rounded-md w-[65%] h-[3em] text-[0.7em]">
+                    <a asp-page="/LoginPage/Index">
+                        <div class="flex flex-row justify-center z-20">
+                      
+                            <button type="button" class="primary-button rounded-md w-[65%] h-[3em] text-[0.7em]">
                             <div class="flex flex-row justify-center ">
                                 <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-right-from-bracket" class="svg-inline--fa fa-arrow-right-from-bracket my-auto mr-2 w-[1em] h-[1em] " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16">
                                     <path fill="currentColor" d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"></path>
                                 </svg>
                                 <div>Đăng xuất</div>
                             </div>
-                        </button>
-                    </div>
-                </div>
+                            </button>
+                   
+                        </div></a>
+                   
+                </div> 
                 <div class="main-part ">
                     <div class="header z-10 border-b-2 flex flex-row justify-between  px-8 relative ">
                         <div class="flex flex-row">
@@ -131,7 +135,7 @@
                                 <img alt="avatar" loading="lazy" width="100" height="100" decoding="async" data-nimg="1" class="rounded-full w-[2.5em] h-[2.5em]" src="/images/avatar1.jpg" style="color: transparent;">
                                 <div class="flex flex-col ml-3">
                                     <div class="avatar-name">@s?.Name</div>
-                                    <div class="avatar-email">2512036968@student.hcmus.edu.vn</div>
+                                    <div class="avatar-email">@($"{s?.StudentCode}@student.hcmus.edu.vn")</div>
                                 </div>
                             </div>
                         </div>
@@ -233,7 +237,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="section border mt-2.5 relative">
+                <!--              <div class="section border mt-2.5 relative">
                                     <div class="flex flex-row flex-start top-0 left-0  absolute w-full ">
                                         <div class="secondary-header-background  w-[40%] rounded-tl">
                                             <h1 class="section-title">Thông tin chi tiết</h1>
@@ -345,7 +349,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>            -->
                     <div class="fixed top-0 py-2.5  right-2 overflow-auto h-[85vh] w-[20vw]">
                         <div class="header invisible"></div>
                         <div class="">

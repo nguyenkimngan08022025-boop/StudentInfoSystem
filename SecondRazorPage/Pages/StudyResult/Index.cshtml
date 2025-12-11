@@ -1,5 +1,5 @@
 ﻿@page
-@model SecondRazorPage.Pages.StudyResult.IndexModel
+@model SecondRazorPage.Pages.Categories.IndexModel
 
 @{
     Layout = "_StudentLayout";
@@ -23,8 +23,8 @@
             <a href="/Student/HocPhi"><i class="icon">💰</i> Học phí</a>
             <a href="/Student/ThongBao"><i class="icon">🔔</i> Thông báo</a>
         </nav>
-
-        <button class="logout">Đăng xuất</button>
+        <a asp-page="/LoginPage/Index">
+        <button class="logout">Đăng xuất</button></a>
     </aside>
 
     <main class="main">
@@ -39,12 +39,12 @@
             <div class="card card-blue">
                 <h2>Bảng điểm</h2>
 
-                <select class="term-dropdown">
+           <!--     <select class="term-dropdown">
                     <option value="">-- Tất cả năm học --</option>
                     <option value="2024-2025">2024-2025</option>
                     <option value="2025-2026">2025-2026</option>
                     <option value="2026-2027">2026-2027</option>
-                </select>
+                </select>   -->
 
                 <table class="mini-table" id="score-table">
                     <thead>
@@ -64,92 +64,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr data-term="2024-2025">
-                            <td>1</td>
-                            <td>2024-2025</td>
-                            <td>1</td>
-                            <td>IT001</td>
-                            <td>Cấu trúc dữ liệu</td>
-                            <td>3</td>
-                            <td>25CTT5</td>
-                            <td>Giỏi</td>
-                            <td>9.0</td>
-                            <td></td>
-                            <td>Chính quy</td>
-                            <td>Đại học</td>
-                        </tr>
-                        <tr data-term="2024-2025">
-                            <td>2</td>
-                            <td>2024-2025</td>
-                            <td>2</td>
-                            <td>IT001</td>
-                            <td>Cấu trúc dữ liệu</td>
-                            <td>3</td>
-                            <td>25CTT5</td>
-                            <td>Giỏi</td>
-                            <td>9.1</td>
-                            <td></td>
-                            <td>Chính quy</td>
-                            <td>Đại học</td>
-                        </tr>
+                        @for (int i = 0; i < Model.BangDiem.Count; i++)
+                        {<tr>
+                        
+                                <td>@(i+1)</td>
+                            <td>@(Model.BangDiem[i].NamHoc)</td>
+                        <td>@(Model.BangDiem[i].HocKy)</td>
+                        <td>@(Model.BangDiem[i].MaMonHoc)</td>
+                        <td>@(Model.BangDiem[i].TenMonHoc)</td>
+                        <td>@(Model.BangDiem[i].SoTC)</td>
+                        <td>@(Model.BangDiem[i].Lop)</td>
+                        <td>@(Model.BangDiem[i].LoaiDiem)</td>
+                        <td>@(Model.BangDiem[i].Diem)</td>
+                        <td>@(Model.BangDiem[i].GhiChu)</td>
+                        <td>@(Model.BangDiem[i].ChuongTrinh)</td>
 
-                        <tr data-term="2025-2026">
-                            <td>3</td>
-                            <td>2025-2026</td>
-                            <td>1</td>
-                            <td>IT002</td>
-                            <td>Mạng máy tính</td>
-                            <td>3</td>
-                            <td>25CTT5</td>
-                            <td>Giỏi</td>
-                            <td>9.3</td>
-                            <td></td>
-                            <td>Chính quy</td>
-                            <td>Đại học</td>
-                        </tr>
-                        <tr data-term="2025-2026">
-                            <td>4</td>
-                            <td>2025-2026</td>
-                            <td>2</td>
-                            <td>IT002</td>
-                            <td>Mạng máy tính</td>
-                            <td>3</td>
-                            <td>25CTT5</td>
-                            <td>Khá</td>
-                            <td>8.0</td>
-                            <td></td>
-                            <td>Chính quy</td>
-                            <td>Đại học</td>
-                        </tr>
+                        <td>@(Model.BangDiem[i].He)</td>
 
-                        <tr data-term="2026-2027">
-                            <td>5</td>
-                            <td>2026-2027</td>
-                            <td>1</td>
-                            <td>IT004</td>
-                            <td>Cơ sở trí tuệ nhân tạo</td>
-                            <td>3</td>
-                            <td>25CTT5</td>
-                            <td>Giỏi</td>
-                            <td>9.3</td>
-                            <td></td>
-                            <td>Chính quy</td>
-                            <td>Đại học</td>
-                        </tr>
-                        <tr data-term="2026-2027">
-                            <td>6</td>
-                            <td>2026-2027</td>
-                            <td>2</td>
-                            <td>IT004</td>
-                            <td>Cơ sở trí tuệ nhân tạo</td>
-                            <td>3</td>
-                            <td>25CTT5</td>
-                            <td>Giỏi</td>
-                            <td>9.8</td>
-                            <td></td>
-                            <td>Chính quy</td>
-                            <td>Đại học</td>
-                        </tr>
+                        </tr>}
+                  
 
                     </tbody>
                 </table>

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SecondRazorPage.Data;
 
@@ -11,9 +12,11 @@ using SecondRazorPage.Data;
 namespace SecondRazorPage.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251207140839_TaoBangHocBong")]
+    partial class TaoBangHocBong
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,10 +71,6 @@ namespace SecondRazorPage.Migrations
 
                     b.Property<int>("Stt")
                         .HasColumnType("int");
-
-                    b.Property<string>("StudentCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TenMonHoc")
                         .IsRequired()
@@ -133,44 +132,6 @@ namespace SecondRazorPage.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("SecondRazorPage.Model.Teacher", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<string>("MSGV")
-                        .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
-
-                    b.Property<string>("email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("monday")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("pass")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("telnum")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Teachers");
-                });
             modelBuilder.Entity("SecondRazorPage.Model.DiemRenLuyen", b =>
                 {
                     b.Property<int>("Id")
@@ -186,10 +147,6 @@ namespace SecondRazorPage.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("NamHoc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StudentCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -225,10 +182,6 @@ namespace SecondRazorPage.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SoTien")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StudentCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -268,156 +221,11 @@ namespace SecondRazorPage.Migrations
                     b.Property<int>("Stt")
                         .HasColumnType("int");
 
-                    b.Property<string>("StudentCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("HocPhi");
                 });
-
-            modelBuilder.Entity("SecondRazorPage.Model.KhenThuong", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("GhiChu")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HinhThuc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StudentCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ThoiGian")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("KhenThuong");
-                });
-
-            modelBuilder.Entity("SecondRazorPage.Model.KyLuat", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("GhiChu")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HinhThuc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StudentCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ThoiGian")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("KyLuat");
-                });
-
-            modelBuilder.Entity("SecondRazorPage.Model.LichThi", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CoSoThi")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GioThi")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("HocKy")
-                        .HasColumnType("int");
-
-                    b.Property<string>("MonThi")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NamHoc")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("NgayThi")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("PhongThi")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Stt")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<string>("StudentCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("LichThi");
-                });
-
-            modelBuilder.Entity("SecondRazorPage.Model.ThoiKhoaBieu", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("HocKy")
-                        .HasColumnType("int");
-
-                    b.Property<string>("MaMonHoc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NamHoc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhongHoc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Stt")
-                        .HasColumnType("int");
-
-                    b.Property<string>("StudentCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TenMonHoc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Thoigian")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TinChi")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ThoiKhoaBieu");
-                });
+#pragma warning restore 612, 618
         }
     }
 }

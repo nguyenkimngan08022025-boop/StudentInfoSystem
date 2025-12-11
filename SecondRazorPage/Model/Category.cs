@@ -38,5 +38,9 @@ namespace SecondRazorPage.Model
 
         [Display(Name = "Chuyên ngành")]
         public string Specialization { get; set; }
+
+
+        
+
     }
 }

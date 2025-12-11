@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SecondRazorPage.Data;
 
@@ -11,9 +12,11 @@ using SecondRazorPage.Data;
 namespace SecondRazorPage.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251210114925_TaoMSKhenThuong")]
+    partial class TaoMSKhenThuong
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,44 +136,6 @@ namespace SecondRazorPage.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("SecondRazorPage.Model.Teacher", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<string>("MSGV")
-                        .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
-
-                    b.Property<string>("email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("monday")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("pass")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("telnum")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Teachers");
-                });
             modelBuilder.Entity("SecondRazorPage.Model.DiemRenLuyen", b =>
                 {
                     b.Property<int>("Id")
@@ -418,6 +383,7 @@ namespace SecondRazorPage.Migrations
 
                     b.ToTable("ThoiKhoaBieu");
                 });
+#pragma warning restore 612, 618
         }
     }
 }
