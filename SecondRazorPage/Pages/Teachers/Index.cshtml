@@ -1,0 +1,109 @@
+@page
+@model SecondRazorPage.Pages.Teachers.IndexModel
+
+@{
+    Layout = null; 
+    ViewData["Title"] = "Trang Giảng Viên";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/StudentRes.css" />
+</head>
+<body>
+
+<div class="app">
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-logo">KHTN</div>
+            <h3>CỔNG GIẢNG VIÊN</h3>
+            <p>Đại học Khoa học Tự nhiên</p>
+        </div>
+
+        <nav class="menu">
+            <a href="/Teachers/Profile?teacherCode=@Model.CurrentTeacher?.MSGV">
+                <i class="icon">👤</i> Hồ sơ giảng viên
+            </a>
+
+            <a class="active" href="/Teachers/Index?teacherCode=@Model.CurrentTeacher?.MSGV">
+                <i class="icon">📝</i> Quản lý lớp học phần
+            </a>
+            <a href="/Teachers/lichday?teacherCode=@Model.CurrentTeacher?.MSGV">
+                <i class="icon">📅</i> Lịch dạy
+            </a>
+        </nav>
+
+        <form method="post" action="/Logout" style="margin-top: auto;">
+             <button class="logout" type="submit">Đăng xuất</button>
+        </form>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div class="search">
+                <input type="text" id="class-search" placeholder="Tìm kiếm lớp học..." />
+                <button aria-label="search">🔍</button>
+            </div>
+            <div class="user-info">
+                <span>Xin chào, GV. <strong>@(Model.CurrentTeacher != null ? Model.CurrentTeacher.name : "Khách")</strong></span>
+            </div>
+        </header>
+
+        <section class="content-grid">
+            <div class="card card-blue">
+                <h2>Danh sách lớp phụ trách</h2>
+                
+                <select class="term-dropdown">
+                    <option value="">-- Tất cả học kỳ --</option>
+                    <option value="HK1">Học kỳ 1</option>
+                    <option value="HK2">Học kỳ 2</option>
+                </select>
+
+                <table class="mini-table" id="teacher-table">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã Lớp</th>
+                            <th>Tên Môn Học</th>
+                            <th>Phòng</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-term="HK1">
+                            <td>1</td>
+                            <td>25CTT5</td>
+                            <td>Cấu trúc dữ liệu</td>
+                            <td>C32</td>
+                            <td><button class="btn-action">Nhập điểm</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script>
+    function filterClass() {
+        const selected = document.querySelector(".term-dropdown").value;
+        const rows = document.querySelectorAll("#teacher-table tbody tr");
+        const searchQuery = document.getElementById("class-search").value.toLowerCase();
+
+        rows.forEach(row => {
+            const termMatch = selected === "" || row.getAttribute("data-term") === selected;
+            const subjectName = row.cells[2].textContent.toLowerCase(); 
+            const searchMatch = subjectName.includes(searchQuery);
+            row.style.display = (termMatch && searchMatch) ? "" : "none";
+        });
+    }
+    document.querySelector(".term-dropdown").addEventListener("change", filterClass);
+    document.getElementById("class-search").addEventListener("keyup", filterClass);
+</script>
+
+</body>
+</html>

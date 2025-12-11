@@ -10,6 +10,7 @@ namespace SecondRazorPage.Data
 
         }
         public DbSet<Category> Category { get; set; }//DbSet <Category> tells EF core to create a table using the file Category.cs; the word "category" outside is the name of that table, it can be a, b, c,...
+<<<<<<< HEAD
 
         public DbSet<HocPhi> HocPhi { get; set; }
 
@@ -25,5 +26,8 @@ namespace SecondRazorPage.Data
         public DbSet<LichThi> LichThi { get; set; }
 
         public DbSet<KhenThuong> KhenThuong { get; set; }
+=======
+        public DbSet<Teacher> Teachers { get; set; }  
+>>>>>>> origin/thaikhang
     }
 }
