@@ -133,7 +133,7 @@ namespace SecondRazorPage.Migrations
                     b.ToTable("Category");
                 });
 
-<<<<<<< HEAD
+
             modelBuilder.Entity("SecondRazorPage.Model.DiemRenLuyen", b =>
                 {
                     b.Property<int>("Id")
@@ -380,47 +380,47 @@ namespace SecondRazorPage.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ThoiKhoaBieu");
-=======
-            modelBuilder.Entity("SecondRazorPage.Model.Teacher", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+                    modelBuilder.Entity("SecondRazorPage.Model.Teacher", b =>
+                        {
+                            b.Property<int>("id")
+                                .ValueGeneratedOnAdd()
+                                .HasColumnType("int");
 
-                    b.Property<string>("MSGV")
-                        .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
+                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<string>("email")
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("MSGV")
+                                .IsRequired()
+                                .HasMaxLength(8)
+                                .HasColumnType("nvarchar(8)");
 
-                    b.Property<string>("monday")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                            b.Property<string>("email")
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                            b.Property<string>("monday")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("pass")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                            b.Property<string>("name")
+                                .IsRequired()
+                                .HasMaxLength(100)
+                                .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("telnum")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                            b.Property<string>("pass")
+                                .IsRequired()
+                                .HasMaxLength(20)
+                                .HasColumnType("nvarchar(20)");
 
-                    b.HasKey("id");
+                            b.Property<string>("telnum")
+                                .HasMaxLength(10)
+                                .HasColumnType("nvarchar(10)");
 
-                    b.ToTable("Teachers");
->>>>>>> origin/thaikhang
+                            b.HasKey("id");
+
+                            b.ToTable("Teachers");
+
+                        });
+
                 });
-#pragma warning restore 612, 618
         }
-    }
-}
+    } }
