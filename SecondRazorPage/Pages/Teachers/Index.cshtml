@@ -1,5 +1,5 @@
 @page
-@model SecondRazorPage.Pages.Teachers.IndexModel
+@model SecondRazorPage.Pages.Teachers.ProfileModel
 
 @{
     Layout = null; 
@@ -37,14 +37,10 @@
             </a>
         </nav>
         <a asp-page="/LoginPage/Index">
-<<<<<<< HEAD
+
         
              <button class="logout" type="submit">Đăng xuất</button>
        </a>
-=======
-             <button class="logout" type="submit">Đăng xuất</button>
-        </a>
->>>>>>> origin/thaikhang
     </aside>
 
     <main class="main">
@@ -62,11 +58,11 @@
             <div class="card card-blue">
                 <h2>Danh sách lớp phụ trách</h2>
                 
-                <select class="term-dropdown">
+                <!--<select class="term-dropdown">
                     <option value="">-- Tất cả học kỳ --</option>
                     <option value="HK1">Học kỳ 1</option>
                     <option value="HK2">Học kỳ 2</option>
-                </select>
+                    </select>-->
 
                 <table class="mini-table" id="teacher-table">
                     <thead>
@@ -79,13 +75,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr data-term="HK1">
-                            <td>1</td>
-                            <td>25CTT5</td>
-                            <td>Cấu trúc dữ liệu</td>
-                            <td>C32</td>
-                            <td><button class="btn-action">Nhập điểm</button></td>
-                        </tr>
+                       
+
+                                @for (int i = 0; i < Model.QuanLyLop.Count; i++)
+                                {
+                                    <tr>
+                                        <td>@(i + 1)</td>
+                                        <td>@(Model.QuanLyLop[i].MaLop)</td>
+                                        <td>@(Model.QuanLyLop[i].TenMonHoc)</td>
+                                        <td>@(Model.QuanLyLop[i].Phong)</td>
+                                        <td><button class="btn-action">Nhập điểm</button></td>
+                                    </tr>
+                                }
+                            }
                     </tbody>
                 </table>
             </div>

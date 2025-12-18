@@ -17,7 +17,7 @@ namespace SecondRazorPage.Pages.Teachers
 
         public Teacher CurrentTeacher { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(string? teacherCode)
+        /*public async Task<IActionResult> OnGetAsync(string? teacherCode)
         {
             if (string.IsNullOrEmpty(teacherCode))
             {
@@ -33,6 +33,59 @@ namespace SecondRazorPage.Pages.Teachers
             }
 
             return Page();
+        }*/
+
+
+
+
+
+
+        
+
+        public List<LichDay> LichDay { get; set; }
+        public List<QuanLyLop> QuanLyLop { get; set; }
+      
+
+
+
+
+        public async Task<IActionResult> OnGetAsync()
+        {
+            var TeacherCode = HttpContext.Request.Cookies["MSGV"];
+            if (!string.IsNullOrEmpty(TeacherCode))
+            {
+                CurrentTeacher = await _context.Teachers
+                    .FirstOrDefaultAsync(c => c.MSGV == TeacherCode);
+
+
+
+                LichDay = await _context.LichDay
+                .Where(r => r.MSGV == TeacherCode)
+                .ToListAsync();
+
+                QuanLyLop = await _context.QuanLyLop
+                    .Where(f => f.MSGV == TeacherCode)
+                    .ToListAsync();
+
+               
+
+                return Page();
+            }
+            else
+            {
+
+                return RedirectToPage("/LoginPage/Teacher");
+            }
         }
+        public IActionResult OnPostLogout()
+        {
+
+            Response.Cookies.Delete("MSGV");
+
+
+            return RedirectToPage("/LoginPage/Teacher");
+        }
+
     }
+
 }

@@ -1,5 +1,5 @@
 @page
-@model SecondRazorPage.Pages.Teachers.ScheduleModel
+@model SecondRazorPage.Pages.Teachers.ProfileModel
 
 @{
     Layout = null;
@@ -37,16 +37,12 @@
             </a>
         </nav>
 
-<<<<<<< HEAD
+
             <a asp-page="/LoginPage/Index">
 
                 <button class="logout" type="submit">Đăng xuất</button>
             </a>
-=======
-        <a asp-page="/LoginPage/Index">
-             <button class="logout" type="submit">Đăng xuất</button>
-        </a>
->>>>>>> origin/thaikhang
+
     </aside>
 
     <main class="main">
@@ -77,18 +73,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if (Model.DanhSachLich.Count > 0)
+                        @if (Model.LichDay.Count > 0)
                         {
-                            @foreach (var lich in Model.DanhSachLich)
+                            @foreach (var lich in Model.LichDay)
                             {
                                 <tr>
                                     <td style="font-weight: bold; color: #0056b3;">@lich.Thu</td>
                                     <td>@lich.Ngay</td>
-                                    <td>@lich.Ca</td>
-                                    <td>@lich.TenMon</td>
-                                    <td><span class="badge" style="background: #e1f5fe; color: #0288d1; padding: 4px 8px; border-radius: 4px;">@lich.MaLop</span></td>
+                                    <td>@lich.CaHoc</td>
+                                    <td>@lich.MonHoc</td>
+                                    <td><span class="badge" style="background: #e1f5fe; color: #0288d1; padding: 4px 8px; border-radius: 4px;">@lich.Lop</span></td>
                                     <td style="font-weight: bold;">@lich.Phong</td>
-                                    <td><span style="color: green;">✔ Đã lên lịch</span></td>
+                                    <td><span style="color: green;">@lich.TrangThai</span></td>
                                 </tr>
                             }
                         }
