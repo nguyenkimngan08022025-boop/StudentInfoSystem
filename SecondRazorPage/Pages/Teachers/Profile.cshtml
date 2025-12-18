@@ -32,38 +32,261 @@
                 <i class="icon">📅</i> Lịch dạy
             </a>
         </nav>
+<<<<<<< HEAD
             <a asp-page="/LoginPage/Index">
 
                 <button class="logout" type="submit">Đăng xuất</button>
             </a>
+=======
+        <a asp-page="/LoginPage/Index">
+             <button class="logout" type="submit">Đăng xuất</button>
+        </a>
+>>>>>>> origin/thaikhang
     </aside>
 
     <main class="main">
         <header class="topbar">
             <span>Hồ sơ cá nhân</span>
             <div class="user-info">
-                <span>Xin chào, <strong>@Model.CurrentTeacher?.name</strong></span>
+                <span>Giảng viên <strong>@Model.CurrentTeacher?.name</strong></span>
             </div>
         </header>
 
-        <section class="content-grid">
-            <div class="card card-blue" style="max-width: 600px; margin: 0 auto;">
-                <h2 style="text-align: center; border-bottom: 1px solid #eee; padding-bottom: 10px;">THÔNG TIN GIẢNG VIÊN</h2>
-                
-                <div style="margin-top: 20px; font-size: 16px; line-height: 2;">
-                    <p><strong>Họ và tên:</strong> @Model.CurrentTeacher?.name</p>
-                    <p><strong>Mã giảng viên:</strong> @Model.CurrentTeacher?.MSGV</p>
-                    <p><strong>Khoa/Môn</strong> Công nghệ thông tin/@Model.CurrentTeacher?.monday</p>
-                    <p><strong>Email:</strong> @Model.CurrentTeacher?.email</p>
-                    <p><strong>Số điện thoại:</strong> @Model.CurrentTeacher?.telnum</p>
+<!--Giao diện-->
+<div class="content-body">
+            
+            <div class="section-card">
+                <div class="section-header-wrapper">
+                    <div class="section-header-bg">
+                        <h3 class="section-title">Thông tin chung</h3>
+                    </div>
+                    <div class="section-header-triangle"></div>
                 </div>
 
-                <div style="margin-top: 30px; text-align: center;">
-                    <button class="btn-action" style="background-color: #f39c12;">Đổi mật khẩu</button>
-                    <button class="btn-action">Cập nhật thông tin</button>
+                <div class="section-content">
+                    <div class="col-left">
+                        <div class="avatar-container">
+                            <img src="~/images/avatar1.jpg" alt="Avatar" class="avatar-img" />
+                        </div>
+                        <div class="avatar-name">@Model.CurrentTeacher?.name</div>
+                        <div class="avatar-role">Giảng viên</div>
+                    </div>
+
+                    <div class="col-right">
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">Mã Giảng Viên</div>
+                                <div class="info-value">@Model.CurrentTeacher?.MSGV</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Họ và tên</div>
+                                <div class="info-value">@Model.CurrentTeacher?.name</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Giới tính</div>
+                                <div class="info-value">@Model.CurrentTeacher?.sex</div> 
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Ngày sinh</div>
+                                <div class="info-value">@Model.CurrentTeacher?.born</div> </div>
+                            <div class="info-item">
+                                <div class="info-label">Chuyên ngành</div>
+                                <div class="info-value">@Model.CurrentTeacher?.monday</div>
+                            </div>
+                            <!--<div class="info-item">
+                                <div class="info-label">Học vị</div>
+                                <div class="info-value">Thạc sĩ / Tiến sĩ</div>
+                            </div>-->
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
+
+            <div class="section-card" style="margin-top: 30px;">
+                <div class="section-header-wrapper">
+                    <div class="section-header-bg secondary-bg">
+                        <h3 class="section-title">Thông tin liên hệ</h3>
+                    </div>
+                    <div class="section-header-triangle secondary-triangle"></div>
+                </div>
+
+                <div class="section-content">
+                    <div class="info-grid full-width">
+                        <div class="info-item">
+                            <div class="info-label">Email liên hệ</div>
+                            <div class="info-value">@Model.CurrentTeacher?.email</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Số điện thoại</div>
+                            <div class="info-value">@Model.CurrentTeacher?.telnum</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Tỉnh/Thành phố</div>
+                            <div class="info-value">@Model.CurrentTeacher?.noio</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label">Quốc gia</div>
+                            <div class="info-value">@Model.CurrentTeacher?.qgia</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <style>
+
+            .content-body {
+                padding: 20px;
+                background-color: #fff;
+                min-height: 80vh;
+            }
+
+            .section-card {
+                border: 1px solid #e5e7eb;
+                border-radius: 8px;
+                overflow: hidden;
+                position: relative;
+                box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            }
+
+            .section-header-wrapper {
+                position: relative;
+                width: 100%;
+                height: 50px;
+                display: flex;
+            }
+
+            .section-header-bg {
+                background-color: rgb(38, 61, 115);
+                width: 40%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                padding-left: 20px;
+                border-top-left-radius: 8px;
+                color: white;
+            }
+
+            .secondary-bg {
+                background-color: #4a5568;
+            }
+
+            .section-title {
+                font-size: 1.1em;
+                font-weight: 600;
+                margin: 0;
+                text-transform: uppercase;
+            }
+
+            .section-header-triangle {
+                width: 0; 
+                height: 0; 
+                border-left: 30px solid rgb(38, 61, 115); 
+                border-top: 50px solid transparent;
+                border-bottom: 0px solid transparent;
+            }
+            
+            .secondary-triangle {
+                border-left-color: #4a5568;
+            }
+
+            .section-content {
+                display: flex;
+                padding: 30px 20px;
+                gap: 30px;
+            }
+
+            .col-left {
+                width: 30%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border-right: 1px solid #eee;
+                padding-right: 20px;
+            }
+
+            .avatar-container {
+                width: 150px;
+                height: 150px;
+                margin-bottom: 15px;
+            }
+
+            .avatar-img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 50%; 
+                border: 3px solid #eee;
+            }
+
+            .avatar-name {
+                font-weight: bold;
+                font-size: 1.2em;
+                color: #333;
+                text-align: center;
+            }
+
+            .avatar-role {
+                color: #666;
+                font-size: 0.9em;
+                margin-top: 5px;
+            }
+
+            .col-right {
+                width: 70%;
+            }
+
+            .info-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            
+            .full-width {
+                grid-template-columns: 1fr 1fr 1fr; 
+                width: 100%;
+            }
+
+            .info-item {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .info-label {
+                font-size: 0.85em;
+                color: #6b7280;
+                margin-bottom: 4px;
+                font-weight: 500;
+            }
+
+            .info-value {
+                font-size: 1em;
+                color: #111827; 
+                font-weight: 500;
+                border-bottom: 1px dashed #e5e7eb; 
+                padding-bottom: 2px;
+            }
+
+            .media (max-width: 768px) {
+                .section-content {
+                    flex-direction: column;
+                }
+                .col-left, .col-right {
+                    width: 100%;
+                    border-right: none;
+                }
+                .info-grid, .full-width {
+                    grid-template-columns: 1fr;
+                }
+                .section-header-bg {
+                    width: 70%;
+                }
+            }
+        </style>
+<!--Giao diện-->
+
+
     </main>
 </div>
 </body>
